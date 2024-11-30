@@ -29,12 +29,12 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return{"message": "Hello World!!!"}
+    return{"message": "Hello World"}
 
 @app.middleware("http")
 async def log_origin(request: Request, call_next):
     origin = request.headers.get("origin")
-    print(f"Solicitud desde el origen: {origin}")
+    print(f"Request from origin: {origin}")
     response = await call_next(request)
     return response
 
